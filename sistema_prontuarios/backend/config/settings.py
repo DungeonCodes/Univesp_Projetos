@@ -78,11 +78,19 @@ import dj_database_url
 from dotenv import load_dotenv
 
 # Carregar variáveis do .env
-load_dotenv()
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '../.env'))
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL'),
+        conn_max_age=600,
+        ssl_require=True
+    )
 }
+
+# Desativar prepared statements para suportar o Transaction Pooler
+DATABASES['default']['DISABLE_SERVER_SIDE_CURSORS'] = True
+
 
 
 
