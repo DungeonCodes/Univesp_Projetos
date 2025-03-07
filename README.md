@@ -6,7 +6,7 @@ Este projeto tem como objetivo desenvolver um sistema eficiente para consulta e 
 O sistema é composto por:
 - **Front-end:** Desenvolvido com React.js e Tailwind CSS.
 - **Back-end:** API construída com Node.js e Express.
-- **Banco de Dados:** PostgreSQL para armazenar dados dos prontuários.
+- **Banco de Dados:** PostgreSQL para armazenar dados dos prontuários e conectores com Supabase.
 - **Leitura de Código de Barras:** Utilizando a biblioteca QuaggaJS.
 
 ---
