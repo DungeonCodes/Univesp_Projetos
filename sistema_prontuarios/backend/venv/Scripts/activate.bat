@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\Dani\Documents\Meus_Projetos\Arduino\Univesp_Projetos\sistema_prontuarios\backend\venv
+set VIRTUAL_ENV=C:\Users\Pichau\Documents\MeusProjetos\Java_Projects\Univesp_Projetos\sistema_prontuarios\backend\venv
 
 if not defined PROMPT set PROMPT=$P$G
 

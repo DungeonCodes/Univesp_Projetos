@@ -6,7 +6,7 @@ Este projeto tem como objetivo desenvolver um sistema eficiente para consulta e 
 O sistema é composto por:
 - **Front-end:** Desenvolvido com React.js e Tailwind CSS.
 - **Back-end:** API construída com Node.js e Express.
-- **Banco de Dados:** PostgreSQL para armazenar dados dos prontuários.
+- **Banco de Dados:** PostgreSQL para armazenar dados dos prontuários e conectores com Supabase.
 - **Leitura de Código de Barras:** Utilizando a biblioteca QuaggaJS.
 
 ---
@@ -56,14 +56,82 @@ Sistema-de-Controle-Prontuarios/
 
 ---
 
-## 🚧 Como Executar o Projeto
 
-### 🔄 Pré-requisitos
-- Node.js instalado ([Baixar aqui](https://nodejs.org/))
-- PostgreSQL instalado ([Baixar aqui](https://www.postgresql.org/))
-- Git (para clonar o projeto, opcional mas recomendado)
 
-### 📥 Passo a Passo
+---
+
+# 🚧 **Como Executar o Projeto (após clonar o repositório)**
+
+### **1️⃣ Criar e Ativar o Ambiente Virtual**
+```sh
+python -m venv venv       # Cria o ambiente virtual
+```
+- **No Windows (PowerShell)**:
+  ```sh
+  venv\Scripts\Activate
+  ```
+- **No Windows (CMD)**:
+  ```sh
+  venv\Scripts\activate.bat
+  ```
+- **No Linux/Mac**:
+  ```sh
+  source venv/bin/activate
+  ```
+
+---
+
+### **2️⃣ Instalar as Dependências**
+```sh
+pip install -r requirements.txt  # Instala as bibliotecas necessárias
+```
+
+---
+
+### **3️⃣ Aplicar as Migrações do Banco**
+```sh
+python manage.py migrate  # Configura as tabelas no banco de dados
+```
+
+---
+
+### **4️⃣ Criar um Superusuário para o Django Admin**
+```sh
+python manage.py createsuperuser  # Opcional, caso queira acessar o Django Admin
+```
+- Insira um **nome de usuário, e-mail e senha**.
+
+---
+
+### **5️⃣ Iniciar o Servidor Local**
+```sh
+python manage.py runserver
+```
+- O servidor estará disponível em **http://127.0.0.1:8000/**.
+
+---
+
+## 🔄 **Pré-requisitos**
+✅ **Obrigatórios:**
+- **Python** instalado ([Baixar aqui](https://www.python.org/downloads/))
+- **PostgreSQL** instalado ([Baixar aqui](https://www.postgresql.org/))  
+
+✅ **Recomendados (opcionais, mas úteis):**
+- **Git** (para clonar o projeto) → [Baixar aqui](https://git-scm.com/)
+- **Node.js** (*se houver integração com o frontend React*) → [Baixar aqui](https://nodejs.org/)
+
+---
+
+**📌 Observações:**
+- O **banco de dados já está configurado no Supabase**, então não precisa configurar manualmente o PostgreSQL.  
+- Se houver **erros de dependências**, rode:
+  ```sh
+  pip install --upgrade pip
+  pip install -r requirements.txt
+  ```
+- Se precisar **parar o servidor**, pressione **CTRL + C** no terminal.
+
+Agora seu projeto Django estará rodando corretamente! 🚀
 
 #### 1️⃣ Clone o repositório:
 ```bash
