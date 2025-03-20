@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -83,11 +84,14 @@ from dotenv import load_dotenv
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '../.env'))
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL'),
-        conn_max_age=600,
-        ssl_require=True
-    )
+    'default': { 
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": config('oraganizaSame'),
+        "USER": config('postgres'),
+        "PASSWORD":config('280611'),
+        "HOST": config("localhost"),
+        "PORT": config("5432")
+    }
 }
 
 # Desativar prepared statements para suportar o Transaction Pooler
