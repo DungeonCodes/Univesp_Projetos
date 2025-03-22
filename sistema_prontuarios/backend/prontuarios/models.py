@@ -1,13 +1,16 @@
 from django.db import models
 
-class Prontuario(models.Model):
-    codigo_barras = models.CharField(max_length=100, unique=True)
-    nome_paciente = models.CharField(max_length=255)
-    data_nascimento = models.DateField()
-    ultima_consulta = models.DateTimeField(null=True, blank=True)
+class Prontuarios(models.Model):
+    credential_id = models.BigIntegerField(unique=True,verbose_name="CNS")
+    name = models.CharField(max_length=255,verbose_name="Nome")
+    last_name = models.CharField(max_length=50,verbose_name="Sobrenome")
+    micro_area = models.IntegerField(verbose_name="Microárea")
+    family = models.IntegerField(verbose_name="Família")
+
 
     # ADICIONE ESTE CAMPO PARA FORÇAR UMA MUDANÇA
     observacoes = models.TextField(null=True, blank=True)
 
     def __str__(self):
-        return self.nome_paciente
+        return f"{self.name}{self.last_name} Prontuário: {self.family}-{self.micro_area}"
+    

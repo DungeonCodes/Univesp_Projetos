@@ -90,17 +90,13 @@ load_dotenv(dotenv_path=os.path.join(BASE_DIR, ".env"))
 DATABASES = {
     'default': { 
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": config('oraganizaSame'),
-        "USER": config('postgres'),
-        "PASSWORD":config('280611'),
-        "HOST": config("localhost"),
-        "PORT": config("5432")
+        "NAME": config('DB_NAME'),
+        "USER": config('DB_USER'),
+        "PASSWORD":config('DB_PASSWORD'),
+        "HOST": config('DB_HOST'),
+        "PORT": config('DB_PORT'),
     }
-    "default": dj_database_url.config(
-        default=os.getenv("DATABASE_URL"),
-        conn_max_age=600,
-        ssl_require=True
-    )
+   
 }
 
 # Desativar prepared statements para suportar o Transaction Pooler

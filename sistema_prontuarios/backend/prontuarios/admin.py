@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Prontuario  # Importe o modelo
+from .models import Prontuarios  # Importe o modelo
 
-@admin.register(Prontuario)
+@admin.register(Prontuarios)
 class ProntuarioAdmin(admin.ModelAdmin):
-    list_display = ('codigo_barras', 'nome_paciente', 'data_nascimento', 'ultima_consulta')
-    search_fields = ('nome_paciente', 'codigo_barras')
-    list_filter = ('data_nascimento',)
+    list_display = ('micro_area','family','credential_id', 'name', 'last_name')
+    search_fields = ('name', 'credential_id','family','micro_area')
+    list_filter = ('family','micro_area')
