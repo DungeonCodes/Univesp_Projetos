@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Prontuarios  # Importe o modelo
+from prontuarios.models import Prontuarios  # Importe o modelo
 
 @admin.register(Prontuarios)
 class ProntuarioAdmin(admin.ModelAdmin):
