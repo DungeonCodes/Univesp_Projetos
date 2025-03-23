@@ -18,6 +18,10 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+        # Admin do Django
     path('admin/', admin.site.urls),
-    path('',include('prontuarios.urls')),
+
+    # Rotas da aplicação
+    path('', include('prontuarios.urls')),
+      
 ]
