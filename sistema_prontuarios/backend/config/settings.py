@@ -14,7 +14,8 @@ from pathlib import Path
 from decouple import config
 import os
 import dj_database_url
-from dotenv import load_dotenv
+# from dotenv import load_dotenv > com o uso do decouple, não é necessário essa bilbioteca 
+
 
 
 
@@ -85,8 +86,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-# Carregar variáveis do .env
-load_dotenv(dotenv_path=os.path.join(BASE_DIR, ".env"))
+# Carregar variáveis do .env - config () (decouple) carrega automaticamente 
+# as variáveis no arquivo .env se estiver na raiz do programa
+# load_dotenv(dotenv_path=os.path.join(BASE_DIR, ".env"))
 
 # Configuração do Banco de Dados
 DATABASES = {
