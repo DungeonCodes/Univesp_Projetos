@@ -131,3 +131,4 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+AUTH_USER_MODEL = 'prontuarios.SisUser' 
