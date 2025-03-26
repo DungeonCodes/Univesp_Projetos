@@ -21,7 +21,7 @@ urlpatterns = [
         # Admin do Django
     path('admin/', admin.site.urls),
 
-    # Rotas da aplicação
+    # Rotas da aplicacao
     path('', include('prontuarios.urls')),
       
 ]
