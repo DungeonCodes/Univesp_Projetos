@@ -14,10 +14,7 @@ from pathlib import Path
 from decouple import config
 import os
 import dj_database_url
-# from dotenv import load_dotenv > com o uso do decouple, não é necessário essa bilbioteca 
-
-
-
+# from dotenv import load_dotenv > com o uso do decouple, nao e necessario essa biblioteca 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,10 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-7ptpp97=ku&afe$97cr__u04w3l6b1jyt-7r=q)9zky(dnc2%&")
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# SECURITY WARNING: do not run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
-# Permitir apenas os hosts específicos
+# Permitir apenas os hosts especificos
 ALLOWED_HOSTS = [
     "univespprojetos-production.up.railway.app",
     "127.0.0.1",
@@ -40,7 +37,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://univespprojetos-production.up.railway.app"
 ]
 
-CSRF_COOKIE_SECURE = True  # Garantir cookies seguros em produção
+CSRF_COOKIE_SECURE = True  # Garantir cookies seguros em producao
 
 # Adicionar suporte a Proxy para HTTPS no Railway
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
@@ -53,7 +50,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "prontuarios",  # Certifique-se de que essa linha está aqui
+    "prontuarios",  # Certifique-se de que essa linha esta aqui
 ]
 
 MIDDLEWARE = [
@@ -86,17 +83,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-# Carregar variáveis do .env - config () (decouple) carrega automaticamente 
-# as variáveis no arquivo .env se estiver na raiz do programa
+# Carregar variaveis do .env - config() (decouple) carrega automaticamente 
+# as variaveis do arquivo .env se estiver na raiz do projeto
 # load_dotenv(dotenv_path=os.path.join(BASE_DIR, ".env"))
 
-# Configuração do Banco de Dados
+# Configuracao do Banco de Dados
 DATABASES = {
     'default': { 
         "ENGINE": "django.db.backends.postgresql",
         "NAME": config("DB_NAME"),
         "USER": config("DB_USER"),          
-        "PASSWORD":config('DB_PASSWORD'),
+        "PASSWORD": config('DB_PASSWORD'),
         "HOST": config('DB_HOST'),
         "PORT": config('DB_PORT'),
     }
@@ -127,8 +124,8 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
 
-# Configuração para arquivos estáticos no Railway
+# Configuracao para arquivos estaticos no Railway
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-AUTH_USER_MODEL = 'prontuarios.SisUser' 
+AUTH_USER_MODEL = 'prontuarios.SisUser'
