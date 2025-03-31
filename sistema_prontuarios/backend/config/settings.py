@@ -121,6 +121,9 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
 
+# Configuracao de hora
+DATE_INPUT_FORMATS = ['%d/%m/%Y %H:%M']
+
 # Configuracao para arquivos estaticos no Railway
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"

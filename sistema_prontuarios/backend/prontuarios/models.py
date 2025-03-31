@@ -44,3 +44,45 @@ class SisUser(AbstractUser):
 
     def __str__(self):
         return f"{self.username} - {self.email} - {self.get_user_level_display()}"
+    
+class Team(models.Model):
+
+    micro_area = models.IntegerField(
+        primary_key=True,
+        verbose_name="Microarea"
+    )
+
+    class Team(models.TextChoices):
+        ENFERMAGEM = 'enf'
+        MEDICO = 'med'
+        FONOAUDIOLOGIA = 'fono'
+        PSICOLOGIA = 'psico'
+        DENTISTA = 'dent'
+        OUTROS = 'other'
+    
+    team = models.CharField(
+        max_length=30,
+        choices=Team.choices,
+        verbose_name="Equipe"
+    )
+
+    id_team = models.IntegerField(unique=True, verbose_name="ID Team")
+
+class Transfer(models.Model):
+    id_transfer = models.BigIntegerField(unique=True, verbose_name="ID Transferencia")
+    id_professional = models.ForeignKey(Professional, on_delete=models.CASCADE)
+    id_receptor = models.BigIntegerField(
+        Professional
+        
+        def __str__(self):
+        return f"{self.id_professional} -{self.name_professional}"
+    )
+    checkout = models.DateTimeField(
+        verbose_name="Data de check-out",
+        editable=False
+    )
+    checkin = models.DateTimeField(
+        verbose_name="Data de check-in",
+        editable=False
+    )
+    cns = models.ForeignKey(Prontuarios, verbose_name="CNS")
