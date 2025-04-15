@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-import uuid  # Importa a biblioteca uuid
+import uuid  # Importa a biblioteca uuid para garantir IDs únicos e seguros.
 
+# Cria a relacao de Profissionais da UBS
 class Professional(models.Model):
     id_professional = models.UUIDField(
         primary_key=True,
@@ -20,7 +21,7 @@ class Professional(models.Model):
         return f"{self.name_professional} {self.last_name_professional}"  # Removido acento
 
 
-
+# Cria a relacao de Prontuarios 
 class Prontuarios(models.Model):
     id_prontuario = models.UUIDField(
         primary_key=True,
@@ -65,34 +66,31 @@ class SisUser(AbstractUser):
 
     def __str__(self):
         return f"{self.username} - {self.email} - {self.get_user_level_display()}"
-    
+# relação de equipe ESF com microárea    
 class Team(models.Model):
-
-    micro_area = models.IntegerField(
+    id_team = models.UUIDField(
         primary_key=True,
+        editable=False,
+        default=uuid.uuid4,
+        verbose_name="ID Equipe"  # Campo ID sem acento
+    )
+    team = models.IntegerField(
+        verbose_name="Equipe"
+    )
+    micro_area = models.IntegerField(
+        unique=True,
         verbose_name="Microarea"
     )
 
-    class Team(models.TextChoices):
-        ENFERMAGEM = 'enf'
-        MEDICO = 'med'
-        FONOAUDIOLOGIA = 'fono'
-        PSICOLOGIA = 'psico'
-        DENTISTA = 'dent'
-        OUTROS = 'other'
+    def __str__(self):
+        return f"Equipe: {self.team} - Microarea: {self.micro_area}"
     
-    team = models.CharField(
-        max_length=30,
-        choices=Team.choices,
-        verbose_name="Equipe"
-    )
-
-    id_team = models.IntegerField(unique=True, verbose_name="ID Team")
+# Cria a relacao de transferencias de prontuarios
 
 class Transfer(models.Model):
     id_transfer = models.UUIDField(primary_key=True, editable=False, default=uuid.uuid4, verbose_name="ID Transferencia")  # Campo ID sem acento
-    id_sender = models.ForeignKey(Professional, to_field="credential_id", related_name="sender", verbose_name="ID Administrativo")
-    id_receiver = models.ForeignKey(Professional, to_field="credential_id", related_name="receiver", verbose_name="ID Receptor")
+    id_sender = models.ForeignKey(Professional, to_field="credential_id", on_delete=models.CASCADE, related_name="sender", verbose_name="ID Administrativo")
+    id_receiver = models.ForeignKey(Professional, to_field="credential_id",on_delete=models.CASCADE, related_name="receiver", verbose_name="ID Receptor")
     checkout = models.DateTimeField(
         verbose_name="Data de check-out",
         editable=False
@@ -101,7 +99,7 @@ class Transfer(models.Model):
         verbose_name="Data de check-in",
         editable=False
     )
-    cns = models.ForeignKey(Prontuarios, verbose_name="CNS")
+    cns = models.ForeignKey(Prontuarios,on_delete=models.CASCADE, verbose_name="CNS")
 
     def __str__(self):
-        return f"Saída Prontuário: {Prontuarios.micro_area}.{Prontuarios.family}. - Entrgue por: {Professional.name_professional} - Returado por: {Professional.name_professional}"
+        return f"Saída Prontuário: {Prontuarios.micro_area}.{Prontuarios.family}. - Entregue por: {Professional.name_professional} - Returado por: {Professional.name_professional}"
