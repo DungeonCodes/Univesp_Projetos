@@ -1,0 +1,6 @@
+.env
+__pycache__/
+*.pyc
+db.sqlite3
+secrets.json
+pytest_cache/

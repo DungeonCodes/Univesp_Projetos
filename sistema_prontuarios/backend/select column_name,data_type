@@ -1,0 +1,15 @@
+         table_name         
+----------------------------
+ django_migrations
+ django_content_type
+ auth_permission
+ auth_group
+ auth_group_permissions
+ auth_user
+ auth_user_groups
+ auth_user_user_permissions
+ django_admin_log
+ django_session
+ prontuarios_prontuarios
+(11 rows)
+
