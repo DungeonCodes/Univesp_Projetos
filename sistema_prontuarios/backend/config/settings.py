@@ -11,16 +11,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-<<<<<<< HEAD
-import os
-import dj_database_url
-from dotenv import load_dotenv
-=======
 from decouple import config
 import os
 import dj_database_url
 # from dotenv import load_dotenv > com o uso do decouple, nao e necessario essa biblioteca 
->>>>>>> bd
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,17 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-7ptpp97=ku&afe$97cr__u04w3l6b1jyt-7r=q)9zky(dnc2%&")
 
-<<<<<<< HEAD
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG", "False").lower() == "true"
-
-# Permitir apenas os hosts específicos
-=======
 # SECURITY WARNING: do not run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
 # Permitir apenas os hosts especificos
->>>>>>> bd
 ALLOWED_HOSTS = [
     "univespprojetos-production.up.railway.app",
     "127.0.0.1",
@@ -50,11 +37,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://univespprojetos-production.up.railway.app"
 ]
 
-<<<<<<< HEAD
 CSRF_COOKIE_SECURE = True  # Garantir cookies seguros em produção
-=======
-CSRF_COOKIE_SECURE = True  # Garantir cookies seguros em producao
->>>>>>> bd
 
 # Adicionar suporte a Proxy para HTTPS no Railway
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
@@ -67,11 +50,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-<<<<<<< HEAD
-    "prontuarios",  # Certifique-se de que essa linha está aqui
-=======
-    "prontuarios",  # Certifique-se de que essa linha esta aqui
->>>>>>> bd
+    "prontuarios", 
 ]
 
 MIDDLEWARE = [
@@ -104,15 +83,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-<<<<<<< HEAD
-# Carregar variáveis do .env
-load_dotenv(dotenv_path=os.path.join(BASE_DIR, ".env"))
-
-# Configuração do Banco de Dados
-DATABASES = {
-    "default": dj_database_url.config(
-        default=os.getenv("DATABASE_URL"),
-=======
 # Carregar variaveis do .env - config() (decouple) carrega automaticamente 
 # as variaveis do arquivo .env se estiver na raiz do projeto
 # load_dotenv(dotenv_path=os.path.join(BASE_DIR, ".env"))
@@ -121,7 +91,6 @@ DATABASES = {
 DATABASES = {
     "default": dj_database_url.config(
         default=config("DATABASE_URL"),
->>>>>>> bd
         conn_max_age=600,
         ssl_require=config("DATABASE_SSL_REQUIRE", default=False, cast=bool)
     )
@@ -152,14 +121,6 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
 
-<<<<<<< HEAD
-# Configuração para arquivos estáticos no Railway
-STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
-
-# Default primary key field type
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-=======
 # Configuracao de hora
 DATE_INPUT_FORMATS = ['%d/%m/%Y %H:%M']
 
@@ -168,4 +129,3 @@ STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 AUTH_USER_MODEL = 'prontuarios.SisUser'
->>>>>>> bd
