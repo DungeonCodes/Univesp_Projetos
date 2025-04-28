@@ -1,7 +1,7 @@
 django
 dj-database-url
 python-dotenv
-psycopg2-binary
+psycopg[binary]==3.1.18
 gunicorn
 
 
